@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 import { Button, Col, FloatingLabel, Form } from "react-bootstrap";
 
 const LoginForm = ({ onSubmit }) => {
-  const [user, setUser] = useState({ user: "", password: "" });
+  const [form, setForm] = useState({ user: "", password: "" });
 
   const handleChange = (value, field) => {
-    setUser({ ...user, [field]: value });
+    setForm({ ...form, [field]: value });
   };
 
   return (
@@ -18,14 +18,14 @@ const LoginForm = ({ onSubmit }) => {
       <p className="h2">Bienvenid@ de vuelta</p>
       <FloatingLabel controlId="floatingInput" label="Usuario">
         <Form.Control
-          value={user.user}
+          value={form.user}
           onChange={(e) => handleChange(e.target.value, "user")}
         />
       </FloatingLabel>
       <FloatingLabel controlId="floatingPassword" label="Contraseña">
         <Form.Control
           type="password"
-          value={user.password}
+          value={form.password}
           onChange={(e) => handleChange(e.target.value, "password")}
         />
       </FloatingLabel>
@@ -33,7 +33,7 @@ const LoginForm = ({ onSubmit }) => {
         className="col-6"
         variant="outline-success"
         size="lg"
-        onClick={() => onSubmit(user)}
+        onClick={() => onSubmit(form)}
       >
         Ingresar
       </Button>
@@ -41,7 +41,7 @@ const LoginForm = ({ onSubmit }) => {
   );
 };
 
-LoginForm.prototype = {
+LoginForm.propTypes = {
   onSubmit: PropTypes.func,
 };
 
