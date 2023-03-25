@@ -1,13 +1,18 @@
 import React from 'react'
-import { Col, Container } from 'react-bootstrap'
+// Components
+import { Col } from 'react-bootstrap'
+import Chat from '../components/Chat'
+import FloatLogoutButton from '../components/FloatLogoutButton'
 
 const Stream = () => {
   return (
-    <Container className='h-full' >
+    <div className='vh-100 d-flex' >
       <Col xs={8} >
         <p>Video stream</p>
       </Col>
-    </Container>
+      <Chat />
+      <FloatLogoutButton />
+    </div>
   )
 }
 
