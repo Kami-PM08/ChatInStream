@@ -1,8 +1,12 @@
 import React from 'react'
+// Components
+import Form from '../components/Form'
 
 const Login = () => {
   return (
-    <div>Login</div>
+    <div className="container d-flex flex-wrap justify-content-center align-content-center h-full">
+      <Form />
+    </div>
   )
 }
 
