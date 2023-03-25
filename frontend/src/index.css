@@ -12,6 +12,6 @@ code {
     monospace;
 }
 
-.h-full {
-  height: 100vh;
+.w-fit-content {
+  width: fit-content;
 }

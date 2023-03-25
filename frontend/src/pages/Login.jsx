@@ -21,7 +21,7 @@ const Login = () => {
   };
 
   return (
-    <Container fluid className="d-flex flex-wrap justify-content-center align-content-center h-full" >
+    <Container fluid className="d-flex flex-wrap justify-content-center align-content-center vh-100" >
       <LoginForm onSubmit={onLogin} />
     </Container>
   );
