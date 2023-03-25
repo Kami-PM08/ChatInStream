@@ -1,5 +1,6 @@
 const { request, response } = require("express");
 const Message = require("../models/message");
+const saveMessage = require("../utils/saveMessage");
 
 const getMessagesByChat = async (req = request, res = response) => {
   const { id } = req.params;
@@ -16,10 +17,9 @@ const getMessagesByChat = async (req = request, res = response) => {
 
 const postMessage = async (req = request, res = response) => {
   const { text } = req.body;
-  const message = new Message({ text, ...req.auth });
 
   try {
-    await message.save();
+    const message = await saveMessage({ text, ...req.auth });
 
     res.json({
       message,

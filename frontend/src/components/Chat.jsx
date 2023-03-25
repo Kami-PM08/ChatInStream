@@ -2,19 +2,33 @@ import React, { useContext, useEffect, useState } from "react";
 // Components
 import { Col } from "react-bootstrap";
 import ChatSend from "./ChatSend";
+// Sokect
+import { io } from "socket.io-client";
 // Services
 import getMessagesByChat from "../services/message/getMessagesByChat";
-import createMessage from "../services/message/createMessage";
 // Context
 import { UserContext } from "../context/user/UserProvider";
+import ChatContent from "./ChatContent";
+
+const socket = io(process.env.REACT_APP_API_URL);
 
 const Chat = () => {
   const { token, user } = useContext(UserContext);
 
   const [messages, setMessages] = useState([]);
 
+  new Date().getMinutes()
+
   useEffect(() => {
     getMessages();
+    socket.on("sendMessage", (message) => {
+      console.log("ONSEND", message);
+      const date = new Date(message.created)
+      console.log("Date ", date.getHours() + ":" + date.getMinutes());
+    });
+    return () => {
+      socket.off("sendMessage");
+    };
   }, []);
 
   const getMessages = async () => {
@@ -27,12 +41,7 @@ const Chat = () => {
   };
 
   const sendMessage = async (text) => {
-    if (text.length === 0) return;
-    try {
-      await createMessage(token, { text });
-    } catch (error) {
-      console.log("Error al enviar mensaje: ", error);
-    }
+    socket.emit("newMessage", { text, token });
   };
 
   return (
@@ -40,7 +49,7 @@ const Chat = () => {
       xs={4}
       className="d-flex flex-column border-start border-dark-subtle p-3 justify-content-between"
     >
-      <p>Chat</p>
+      <ChatContent user={user} />
       <ChatSend onSubmit={sendMessage} />
     </Col>
   );

@@ -9,7 +9,7 @@ const ChatSend = ({ onSubmit }) => {
   const onSend = () => {
     onSubmit(message);
     setMessage("");
-  }
+  };
 
   return (
     <InputGroup>
@@ -18,18 +18,14 @@ const ChatSend = ({ onSubmit }) => {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
-      <Button
-        variant="outline-success"
-        id="button-addon2"
-        onClick={onSend}
-      >
+      <Button variant="outline-success" id="button-addon2" onClick={onSend}>
         Send
       </Button>
     </InputGroup>
   );
 };
 
-ChatSend.prototype = {
+ChatSend.propTypes = {
   onSubmit: PropTypes.func,
 };
 
