@@ -5,13 +5,16 @@ import reportWebVitals from "./reportWebVitals";
 // Components
 import { BrowserRouter } from "react-router-dom";
 import Router from "./router/Router";
+import UserProvider from "./context/user/UserProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Router />
-    </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+    </UserProvider>
   </React.StrictMode>
 );
 
