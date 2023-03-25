@@ -7,6 +7,7 @@ const cors = require("cors");
 // Routes imports
 const userRoutes = require("./routes/user");
 const authRoutes = require("./routes/auth");
+const messageRoutes = require("./routes/message");
 
 // DB
 const dbConnection = require("./database/config");
@@ -15,8 +16,9 @@ const dbConnection = require("./database/config");
 const app = express();
 const port = process.env.PORT || 8080;
 const paths = {
-  users: "/user",
+  user: "/user",
   auth: "/auth",
+  message: "/message"
 };
 
 // Middlewares
@@ -24,8 +26,9 @@ app.use(cors({ exposedHeaders: "jwt" }));
 app.use(express.json());
 
 // Use routes
-app.use(paths.users, userRoutes);
+app.use(paths.user, userRoutes);
 app.use(paths.auth, authRoutes);
+app.use(paths.message, messageRoutes);
 
 // Use DB
 dbConnection();
