@@ -6,6 +6,8 @@ const createUser = (data) =>
     .then((res) => {
       return res.data;
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      throw error;
+    });
 
 export default createUser;

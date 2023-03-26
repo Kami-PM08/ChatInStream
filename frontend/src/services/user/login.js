@@ -6,6 +6,8 @@ const login = (data) =>
     .then((res) => {
       return res.headers.jwt;
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      throw error;
+    });
 
 export default login;
