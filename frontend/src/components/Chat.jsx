@@ -17,14 +17,10 @@ const Chat = () => {
 
   const [messages, setMessages] = useState([]);
 
-  new Date().getMinutes()
-
   useEffect(() => {
     getMessages();
     socket.on("sendMessage", (message) => {
-      console.log("ONSEND", message);
-      const date = new Date(message.created)
-      console.log("Date ", date.getHours() + ":" + date.getMinutes());
+      getMessages();
     });
     return () => {
       socket.off("sendMessage");
@@ -33,7 +29,7 @@ const Chat = () => {
 
   const getMessages = async () => {
     try {
-      const messages = await getMessagesByChat(token, "0");
+      const { messages } = await getMessagesByChat(token, "0");
       setMessages(messages);
     } catch (error) {
       console.log("Error al traer mensajes: ", error);
@@ -49,7 +45,10 @@ const Chat = () => {
       xs={4}
       className="d-flex flex-column border-start border-dark-subtle p-3 justify-content-between"
     >
-      <ChatContent user={user} />
+      <Col xs={12} className="border-bottom border-dark-subtle ">
+        <p className="h4 text-center">Bienvenid@ al chat {user}</p>
+      </Col>
+      <ChatContent user={user} messages={messages} />
       <ChatSend onSubmit={sendMessage} />
     </Col>
   );
