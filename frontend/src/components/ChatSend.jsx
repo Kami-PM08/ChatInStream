@@ -11,14 +11,21 @@ const ChatSend = ({ onSubmit }) => {
     setMessage("");
   };
 
+  const handleKeyPress = (event) => {
+    if(event.key === 'Enter'){
+      onSend();
+    }
+  }
+
   return (
     <InputGroup>
       <Form.Control
         placeholder="Mensaje"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
+        onKeyDown={handleKeyPress}
       />
-      <Button variant="outline-success" id="button-addon2" onClick={onSend}>
+      <Button variant="outline-success" id="button-addon2" onClick={onSend} >
         Send
       </Button>
     </InputGroup>
