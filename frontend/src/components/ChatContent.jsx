@@ -15,7 +15,7 @@ const ChatContent = ({ messages }) => {
     <Col xs={12} className="d-flex flex-column justify-content-end vh-85">
       <Col xs={12} className="d-flex flex-column overflow-auto h-100">
         {messages &&
-          messages.map((message) => <ChatMessage message={message} />)}
+          messages.map((message) => <ChatMessage key={message._id} message={message} />)}
         <div ref={bottom} />
       </Col>
     </Col>

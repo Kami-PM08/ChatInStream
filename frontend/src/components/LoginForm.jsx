@@ -24,7 +24,7 @@ const LoginForm = ({ onSubmit, registered, handleForm }) => {
 
   return (
     <Col
-      xs={6}
+      xs={5}
       className="d-flex flex-wrap vh-65 justify-content-evenly align-content-center flex-column shadow rounded-5 text-center mb-4 bg-svg"
     >
       <p className="h2 text-orange">
@@ -45,7 +45,7 @@ const LoginForm = ({ onSubmit, registered, handleForm }) => {
           >
             <option value="">Selecciona tu rol</option>
             {roles.map((role) => (
-              <option value={role.value}>{role.label}</option>
+              <option key={role.value} value={role.value}>{role.label}</option>
             ))}
           </Form.Select>
         </>

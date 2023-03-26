@@ -25,7 +25,6 @@ const ChatMessage = ({ message }) => {
 
   return (
     <Col
-      key={message._id}
       xs={7}
       className={
         "m-2 rounded-4 bg-opacity-75 " + classes.container.layout + classes.container.color

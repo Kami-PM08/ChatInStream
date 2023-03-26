@@ -20,7 +20,7 @@ const Chat = () => {
   useEffect(() => {
     getMessages();
     socket.on("sendMessage", (message) => {
-      getMessages();
+      setMessages(current => [...current, message]);
     });
     return () => {
       socket.off("sendMessage");
