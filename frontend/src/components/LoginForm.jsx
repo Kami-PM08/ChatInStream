@@ -10,6 +10,12 @@ const LoginForm = ({ onSubmit }) => {
     setForm({ ...form, [field]: value });
   };
 
+  const handleKeyPress = (event) => {
+    if(event.key === 'Enter'){
+      onSubmit(form);
+    }
+  }
+
   return (
     <Col
       xs={6}
@@ -20,6 +26,7 @@ const LoginForm = ({ onSubmit }) => {
         <Form.Control
           value={form.user}
           onChange={(e) => handleChange(e.target.value, "user")}
+          onKeyDown={handleKeyPress}
         />
       </FloatingLabel>
       <FloatingLabel controlId="floatingPassword" label="Contraseña">
@@ -27,6 +34,7 @@ const LoginForm = ({ onSubmit }) => {
           type="password"
           value={form.password}
           onChange={(e) => handleChange(e.target.value, "password")}
+          onKeyDown={handleKeyPress}
         />
       </FloatingLabel>
       <Button
