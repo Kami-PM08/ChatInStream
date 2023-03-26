@@ -13,12 +13,12 @@ const ChatMessage = ({ message }) => {
   const classes = {
     container: {
       layout:
-        user === message.user ? "align-self-end rounded-end" : "rounded-start",
+        user === message.user ? "align-self-end no-rounded-bottom-end" : "no-rounded-bottom-start",
       color:
         message.userRole === "MODERATOR"
-          ? " bg-warning-subtle"
+          ? " bg-orange text-white"
           : user === message.user
-          ? " bg-dark-subtle"
+          ? " bg-body-tertiary"
           : " bg-body-secondary",
     },
   };
@@ -28,13 +28,13 @@ const ChatMessage = ({ message }) => {
       key={message._id}
       xs={7}
       className={
-        "m-2 rounded-4 " + classes.container.layout + classes.container.color
+        "m-2 rounded-4 bg-opacity-75 " + classes.container.layout + classes.container.color
       }
     >
-      <p className={"fs-6 fw-bold mb-0 px-2"}>
+      <p className={"fs-6 fw-semibold mb-0 px-2"}>
         {message.user}
         {message.userRole === "MODERATOR" && (
-          <span className="float-end text-danger">Moderador</span>
+          <span className="float-end">Moderador</span>
         )}
       </p>
       <p className={"fs-5 mb-1 px-2"}>{message.text}</p>

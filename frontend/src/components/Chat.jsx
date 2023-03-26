@@ -43,10 +43,10 @@ const Chat = () => {
   return (
     <Col
       xs={4}
-      className="d-flex flex-column border-start border-dark-subtle p-3 justify-content-between"
+      className="d-flex flex-column border-start border-dark-subtle p-3 justify-content-between bg-svg"
     >
       <Col xs={12} className="border-bottom border-dark-subtle ">
-        <p className="h4 text-center">Bienvenid@ al chat {user}</p>
+        <p className="h4 text-center text-orange">Bienvenid@ al chat {user}</p>
       </Col>
       <ChatContent user={user} messages={messages} />
       <ChatSend onSubmit={sendMessage} />

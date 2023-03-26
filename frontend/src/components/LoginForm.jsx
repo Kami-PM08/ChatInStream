@@ -25,9 +25,9 @@ const LoginForm = ({ onSubmit, registered, handleForm }) => {
   return (
     <Col
       xs={6}
-      className="d-flex flex-wrap vh-65 justify-content-evenly align-content-center flex-column shadow rounded-5 text-center mb-4"
+      className="d-flex flex-wrap vh-65 justify-content-evenly align-content-center flex-column shadow rounded-5 text-center mb-4 bg-svg"
     >
-      <p className="h2">
+      <p className="h2 text-orange">
         {registered ? "Bienvenid@ de vuelta" : "Bienvenid@, registrese"}
       </p>
       {!registered && (
