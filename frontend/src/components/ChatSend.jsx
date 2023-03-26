@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 // Components
-import { Button, Form, InputGroup } from "react-bootstrap";
+import { Button, Form, InputGroup, OverlayTrigger, Tooltip } from "react-bootstrap";
+// Icons
+import { SendFill } from "react-bootstrap-icons";
 
 const ChatSend = ({ onSubmit }) => {
   const [message, setMessage] = useState("");
@@ -12,10 +14,10 @@ const ChatSend = ({ onSubmit }) => {
   };
 
   const handleKeyPress = (event) => {
-    if(event.key === 'Enter'){
+    if (event.key === "Enter") {
       onSend();
     }
-  }
+  };
 
   return (
     <InputGroup>
@@ -25,9 +27,13 @@ const ChatSend = ({ onSubmit }) => {
         onChange={(e) => setMessage(e.target.value)}
         onKeyDown={handleKeyPress}
       />
-      <Button variant="outline-success" id="button-addon2" onClick={onSend} >
-        Send
-      </Button>
+      <OverlayTrigger
+        overlay={<Tooltip>Enviar mensaje</Tooltip>}
+      >
+        <Button variant="outline-success" id="button-addon2" onClick={onSend}>
+          <SendFill />
+        </Button>
+      </OverlayTrigger>
     </InputGroup>
   );
 };
